@@ -1,0 +1,43 @@
+{
+  "name": "Schedulist",
+  "author": "Robert",
+  "version": "0.0.7",
+  "description": "Description",
+  "permissions": [
+    "tabs",
+    "*://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "js": [
+      "contentScript.js"
+    ],
+    "css": [
+      "assets/css/main.css"
+    ]
+  }],
+  "browser_action": {
+    "default_title": "Save to Schedulist",
+    "default_icon": {
+      "16": "assets/icons/icon_16.png",
+      "48": "assets/icons/icon_48.png",
+      "128": "assets/icons/icon_128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon_16.png",
+    "48": "assets/icons/icon_48.png",
+    "128": "assets/icons/icon_128.png"
+  },
+  "web_accessible_resources": [
+    "assets/images/spinner.gif"
+  ],
+  "manifest_version": 2
+}

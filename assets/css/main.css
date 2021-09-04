@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.schedulist-ext-alert,
+.schedulist-ext-alert * {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 100% !important;
+  font: inherit !important;
+  vertical-align: baseline !important;
+  float: none !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  color: #fff !important;
+  line-height: 22px !important;
+}
+
+.schedulist-ext-alert {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0;
+  margin:7px !important;
+  background: #8051d5 !important;
+  padding: 9px 17px !important;
+  box-shadow: rgb(0 0 0) 0px 0px 3px 0px !important;
+  z-index: 9999999999999999999999999999 !important;
+  border-radius: 6px !important;
+}
+
+.schedulist-ext-alert.slide-in {
+  animation: slideIn 0.3s ease-in-out !important;
+}
+
+.schedulist-ext-alert.slide-out {
+  animation: slideOut 0.3s ease-in-out !important;
+  animation-fill-mode: forwards !important;
+}
+
+.schedulist-ext-alert .ext-loading {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.schedulist-ext-alert .ext-loading img {
+  width: 37px !important;
+}
+
+.schedulist-ext-alert .ext-loading p {
+  margin-left: 12px !important;
+}
+
+.schedulist-ext-alert.error {
+  color: #fff !important;
+  background: red !important;
+}
+
+.schedulist-ext-alert p {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+@keyframes slideIn {
+  from {
+    right: -199px;
+    opacity: 0;
+  }
+
+  to {
+    right: 0;
+    opacity: 100%;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    right: 0px;
+    opacity: 100%;
+  }
+
+  to {
+    right: -199px;
+    opacity: 0;
+  }
+}
