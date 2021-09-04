@@ -9,7 +9,7 @@ browser.browserAction.onClicked.addListener( async function(tab) {
     }
     browser.tabs.sendMessage(tab.id, {loading: true})
 
-    const endpoint = 'https://schedulist-staging.herokuapp.com/graphql'
+    const endpoint = 'https://schedulist-production.herokuapp.com/graphql'
 
     const query = `
         mutation {
