@@ -14,24 +14,9 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if(request.loading){
         if(document.querySelector('.schedulist-ext-alert .ext-loading')) return
 
-        removeAlert(() => {
-            document.body.insertAdjacentHTML('beforeend', `
-                <div class="schedulist-ext-default-styles schedulist-ext-alert slide-in">
-                    <div class="ext-loading">
-                        <img src="${browser.runtime.getURL('assets/images/spinner.gif')}">
-                        <p>Saving to Schedulist...</p>
-                    </div>
-                </div>
-            `)
-        })
+        removeAlert(createLoadingAlert)
     }else{
-        removeAlert(() => {
-            document.body.insertAdjacentHTML('beforeend', `
-                <div class="schedulist-ext-default-styles schedulist-ext-alert slide-in ${request.error ? 'error' : ''}">
-                    <p>${request.msg}</p>
-                </div>
-            `)
-        })
+        removeAlert(() => createMsgAlert(request.msg, request.error))
 
         setTimeout(() => {
             removeAlert()
@@ -53,4 +38,33 @@ const removeAlert = (callback) => {
     }else{
         if(callback) callback()
     }
+}
+
+const createLoadingAlert = () => {
+    const wrapper = document.createElement('div')
+    wrapper.className = 'schedulist-ext-default-styles schedulist-ext-alert slide-in'
+    document.body.appendChild(wrapper)
+
+    const activityIndicatorWrapper = document.createElement('div')
+    activityIndicatorWrapper.className = 'ext-loading'
+    wrapper.appendChild(activityIndicatorWrapper)
+
+    const img = document.createElement('img')
+    img.src = browser.runtime.getURL('assets/images/spinner.gif')
+    activityIndicatorWrapper.appendChild(img)
+
+    const text = document.createElement('p')
+    text.textContent = 'Saving to Schedulist...'
+    activityIndicatorWrapper.appendChild(text)
+}
+
+const createMsgAlert = (msg, error) => {
+    const wrapper = document.createElement('div')
+    wrapper.className = 'schedulist-ext-default-styles schedulist-ext-alert slide-in'
+    if(error) wrapper.classList.add('error')
+    document.body.appendChild(wrapper)
+
+    const text = document.createElement('p')
+    text.textContent = msg
+    wrapper.appendChild(text)
 }
