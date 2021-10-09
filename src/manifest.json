@@ -1,12 +1,14 @@
 {
   "name": "Schedulist",
   "author": "Kingstinct",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Save links for later in Schedulist",
   "permissions": [
     "tabs",
     "contextMenus",
     "management",
+    "identity",
+    "bookmarks",
     "*://*/*"
   ],
   "background": {
@@ -18,6 +20,9 @@
   "offline_enabled": false,
   "omnibox": {
     "keyword": "sch"
+  },
+  "oauth2": {
+
   },
   "externally_connectable": {
     "ids": ["*"],
@@ -43,6 +48,12 @@
         "default": "Ctrl+Shift+S"
       },
       "description": "Save to Schedulist"
+    },
+    "open-schedulist": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O"
+      },
+      "description": "Open Schedulist"
     }
   },
   "browser_action": {

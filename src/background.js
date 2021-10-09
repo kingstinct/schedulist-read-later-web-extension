@@ -17,9 +17,11 @@ const redirectToLogin = () => {
 }
 
 if(b.contextMenus){
-    b.contextMenus.removeAll();
+
+    const menus = b.contextMenus || b.menus;
+    menus.removeAll();
     
-    b.contextMenus.create(
+    menus.create(
         {
             id: 'link-context-save',
             title: 'Save to Schedulist',
@@ -27,7 +29,7 @@ if(b.contextMenus){
         }
     )
 
-    b.contextMenus.create(
+    menus.create(
         {
             id: 'browser-action-context-save',
             title: 'Save this page to Schedulist',
@@ -35,7 +37,43 @@ if(b.contextMenus){
         }
     )
 
-    b.contextMenus.create(
+    try {
+        menus.create(
+            {
+                id: 'bookmark-context-save',
+                title: 'Save to Schedulist',
+                contexts: ['bookmark']
+            }
+        )
+    } catch (e){
+        console.warn('Bookmark context menu extensions are not supported in this browser')
+    }
+    
+
+    
+    try {
+        menus.create(
+            {
+                id: 'tab-context-save',
+                title: 'Save to Schedulist',
+                contexts: ['tab']
+            }
+        )
+    
+        menus.create(
+            {
+                id: 'tab-context-save-and-close',
+                title: 'Save to Schedulist and close',
+                contexts: ['tab']
+            }
+        )
+    } catch(e){
+        console.log('Tab context menu extensions are not supported in this browser')
+    }
+    
+
+
+    menus.create(
         {
             id: 'browser-action-context-navigate',
             title: 'Open Schedulist',
@@ -43,7 +81,7 @@ if(b.contextMenus){
         }
     )
 
-    b.contextMenus.create(
+    menus.create(
         {
             id: 'browser-action-context-navigate-in-new-tab',
             title: 'Open Schedulist in New Tab',
@@ -101,7 +139,7 @@ if(b.contextMenus){
     b.omnibox.onInputStarted.addListener(async (hey) => {
         console.log('onInputStarted', hey)
     });
-
+    
     b.omnibox.onInputCancelled.addListener(async (hey) => {
         console.log('onInputCancelled', hey)
     });
@@ -135,8 +173,22 @@ if(b.contextMenus){
             b.tabs.create({
                 url: "https://web.schedulist.app"
         });
+        } else if(info.menuItemId === 'bookmark-context-save') {
+            const id = info.bookmarkId;
+            b.bookmarks.get(id, bookmark => {
+                if(bookmark.url){
+                    saveLink(tab, bookmark.url)
+                }
+            });
+            
+        } else if (info.menuItemId === 'tab-context-save') {
+            saveLink(tab)
+        } else if (info.menuItemId === 'tab-context-save-and-close') {
+            saveLink(tab).then(() => b.tabs.discard(tab.id));
+            
         }
-    })
+    });
+
     b.commands.onCommand.addListener(async function (command) {
         if (command === "save-to-schedulist") {
             b.tabs.query({active: true, windowId: b.windows.WINDOW_ID_CURRENT}, tabs => {

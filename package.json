@@ -1,6 +1,6 @@
 {
   "name": "save-to-schedulist",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "generate-safari-extension": "cd .. && xcrun safari-web-extension-converter ./read-later-web-extension/src --bundle-identifier com.kingstinct.schedulist-web-extension --project-location read-later-web-extension/safari",
     "pack-extension": "cd src && zip -r ../submittables/extension.zip . -x */.DS_Store && cd .."
