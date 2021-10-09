@@ -1,15 +1,29 @@
 {
-  "name": "Save to Schedulist",
+  "name": "Schedulist",
   "author": "Kingstinct",
   "version": "0.0.8",
-  "description": "Description",
+  "description": "Save links for later in Schedulist",
   "permissions": [
     "tabs",
+    "contextMenus",
+    "management",
     "*://*/*"
   ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "short_name": "Schedulist",
+  "homepage_url": "https://www.schedulist.app",
+  "offline_enabled": false,
+  "omnibox": {
+    "keyword": "sch"
+  },
+  "externally_connectable": {
+    "ids": ["*"],
+    "matches":[
+      "https://*.schedulist.app/*"
+    ]
   },
   "content_scripts": [{
     "matches": [
@@ -23,24 +37,16 @@
       "assets/css/main.css"
     ]
   }],
-  "page_action": {
-    "hide_matches": ["https://*.schedulist.app/*"],
-    "default_icon": {
-      "19": "assets/icons/icon_19.png",
-      "38": "assets/icons/icon_38.png"
-    },
-    "default_title": "Save to Schedulist"
-  },
   "commands": {
-    "toggle-feature": {
+    "save-to-schedulist": {
       "suggested_key": {
         "default": "Ctrl+Shift+S"
       },
-      "description": "Saves the current URL to Schedulist"
+      "description": "Save to Schedulist"
     }
   },
   "browser_action": {
-    "default_title": "Open Schedulist",
+    "default_title": "Save to Schedulist",
     "default_icon": {
       "16": "assets/icons/icon_16.png",
       "48": "assets/icons/icon_48.png",

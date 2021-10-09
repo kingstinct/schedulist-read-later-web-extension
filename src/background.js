@@ -15,43 +15,141 @@ let pendingTabRequests = [];
 const redirectToLogin = () => {
     b.tabs.create({url: 'https://web.schedulist.app/login?closeAfterLogin=true'})
 }
-b.browserAction.onClicked.addListener( async function(tab) {
-    b.tabs.update({
-        url: "https://web.schedulist.app"
-   });
-})
 
+if(b.contextMenus){
+    b.contextMenus.removeAll();
+    
+    b.contextMenus.create(
+        {
+            id: 'link-context-save',
+            title: 'Save to Schedulist',
+            contexts: ['link']
+        }
+    )
 
-b.menus.create(
-    {
-        onclick: (info, tab) => {
+    b.contextMenus.create(
+        {
+            id: 'browser-action-context-save',
+            title: 'Save this page to Schedulist',
+            contexts: ['browser_action']
+        }
+    )
+
+    b.contextMenus.create(
+        {
+            id: 'browser-action-context-navigate',
+            title: 'Open Schedulist',
+            contexts: ['browser_action']
+        }
+    )
+
+    b.contextMenus.create(
+        {
+            id: 'browser-action-context-navigate-in-new-tab',
+            title: 'Open Schedulist in New Tab',
+            contexts: ['browser_action']
+        }
+    )
+
+    b.omnibox.setDefaultSuggestion({
+        description: 'Add task to Schedulist'
+    });
+
+    b.omnibox.onInputEntered.addListener(async (text, disposition) => {
+        if(text.startsWith('http')){
+            b.management.getAll(apps => {
+                console.log('apps', apps);
+                const pwa = apps.find(a => a.appLaunchUrl === 'https://web.schedulist.app');
+                if (pwa) b.management.launchApp(pwa.id);
+            });
+            switch (disposition) {
+                case "currentTab":
+                    b.tabs.update({url: text});
+                    break;
+                case "newForegroundTab":
+                    b.tabs.create({url: text});
+                    break;
+                case "newBackgroundTab":
+                    b.tabs.create({url: text, active: false});
+                    break;
+                }
+        }
+        else if(text.length > 0) {
+            const endpoint = 'https://schedulist-production.herokuapp.com/graphql'
+
+    const query = `
+        mutation {
+            addTask(data: { title: "${text}" }) {
+                addedTask {
+                    _id
+                }
+            }
+        }
+    `
+    
+        await fetch(endpoint, {
+            method: 'POST',
+            headers:{
+            'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({ query })
+        })
+        }
+    });
+
+    b.omnibox.onInputStarted.addListener(async (hey) => {
+        console.log('onInputStarted', hey)
+    });
+
+    b.omnibox.onInputCancelled.addListener(async (hey) => {
+        console.log('onInputCancelled', hey)
+    });
+
+    b.omnibox.onInputChanged.addListener(async (text, suggest) => {
+        console.log('onInputChanged', text)
+
+        if(text.length > 0){
+            suggest([
+                {content: text, description: 'Add "' + text + '" to Schedulist',},
+                {content: 'https://web.schedulist.app', description: 'Open Schedulist',}
+            ])
+        } else {
+            suggest([
+                {content: 'https://web.schedulist.app', description: 'Open Schedulist',}
+            ])
+        }
+    });
+
+    b.contextMenus.onClicked.addListener((info, tab) => {
+        if(info.menuItemId === 'link-context-save') {
             const url = info.linkUrl;
             saveLink(tab, url)
-        },
-        contexts: ['link']
-    }
-)
-
-b.menus.create(
-    {
-        command: '_execute_page_action',
-        contexts: ['browser_action'],
-        title: 'Save current page to Schedulist'
-    }
-)
-
-b.menus.create(
-    {
-        command: '_execute_browser_action',
-        contexts: ['browser_action'],
-        title: 'Open Schedulist'
-    }
-)
+        } else if(info.menuItemId === 'browser-action-context-save') {
+            saveLink(tab)
+        } else if(info.menuItemId === 'browser-action-context-navigate') {
+            b.tabs.update({
+                url: "https://web.schedulist.app"
+        });
+        } else if(info.menuItemId === 'browser-action-context-navigate-in-new-tab') {
+            b.tabs.create({
+                url: "https://web.schedulist.app"
+        });
+        }
+    })
+    b.commands.onCommand.addListener(async function (command) {
+        if (command === "save-to-schedulist") {
+            b.tabs.query({active: true, windowId: b.windows.WINDOW_ID_CURRENT}, tabs => {
+                b.tabs.get(tabs[0].id, tab => saveLink(tab))
+            })
+        }
+      });
+}
 
 /**
  * 
  * @param {Tab} tab 
- * @param {string} overrideLink 
+ * @param {string?} overrideLink 
  * @returns 
  */
 async function saveLink(tab, overrideLink) {
@@ -117,4 +215,4 @@ async function saveLink(tab, overrideLink) {
 }
 
   
-b.pageAction.onClicked.addListener(saveLink);
+b.browserAction.onClicked.addListener(saveLink);
