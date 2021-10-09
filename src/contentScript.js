@@ -78,3 +78,16 @@ b.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 
 })
+
+window.addEventListener("message", (event) => {
+  // We only accept messages from ourselves
+  if (event.source != window) {
+    return;
+  }
+
+  // forward login and logout events
+  if (event.data.type && (["login", "logout"].includes(event.data.type) )) {
+    console.log("Content script forwarding " + event.data.type);
+    return b.runtime.sendMessage(event.data);
+  }
+}, false);
