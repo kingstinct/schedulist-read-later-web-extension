@@ -1,15 +1,14 @@
 {
   "name": "Schedulist",
   "author": "Kingstinct",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Save links for later in Schedulist",
   "permissions": [
     "tabs",
     "contextMenus",
     "storage",
     "*://*/*",
-    "*://*.schedulist.app/",
-    "*://schedulist-production.herokuapp.com/"
+    "*://*.schedulist.app/"
   ],
   "background": {
     "scripts": ["background.js"],
@@ -32,6 +31,7 @@
       "http://*/*",
       "https://*/*"
     ],
+    "run_at": "document_start",
     "js": [
       "contentScript.js"
     ],

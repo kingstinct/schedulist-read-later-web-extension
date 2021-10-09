@@ -12,235 +12,294 @@ const b = (chrome || msBrowser || browser)
 /** @type {string[]} */
 let pendingTabRequests = [];
 
-const redirectToLogin = () => {
-    b.tabs.create({url: 'https://web.schedulist.app/login?closeAfterLogin=true'})
+const APP_URL = 'https://web.schedulist.app';
+const ENDPOINT = 'https://schedulist-production.herokuapp.com/graphql'
+/** @returns {PromiseLike<{ appUrl: string, endpoint: string, token?: string }>}  */
+const getEnvironment = () => {
+    return new Promise(resolve => {
+        b.storage.local.get(['token', 'appUrl', 'endpoint'], async ({token, endpoint, appUrl}) => {
+            resolve({token, endpoint: endpoint || ENDPOINT, appUrl: appUrl || APP_URL});
+        })
+    });
 }
 
-const ENDPOINT = 'https://schedulist-production.herokuapp.com/graphql'
+const redirectToLogin = async () => {
+    const { appUrl } = await getEnvironment();
+    b.tabs.create({url: appUrl + '/login?closeAfterLogin=true'})
+}
 
+const openInNewTab = async () => {
+    getEnvironment().then(({appUrl}) => {
+        b.tabs.create({
+            url: appUrl,
+        });
+    });
+}
+
+const openInCurrentTab = async () => {
+    getEnvironment().then(({appUrl}) => {
+        b.tabs.update({
+            url: appUrl
+        });
+    });
+}
 
 
 const sendQuery = (query) => {
-    return new Promise((resolve, reject) => {
-        b.storage.local.get('token', async ({token}) => {
-            try {
-                const response = await fetch(ENDPOINT, {
-                    method: 'POST',
-                    headers:{
-                        'Content-Type': 'application/json',
-                        'authorization': 'Bearer ' + token
-                    },
-                    body: JSON.stringify({ query })
-                })
-    
-                resolve(response)
-            } catch(e){
-                reject(e)
-            }
-            
-        });    
-    })
-}
-
-try {
-    const menus = b.contextMenus || b.menus;
-
-    if(menus){
-        menus.removeAll();
-        
-        menus.create(
-            {
-                id: 'link-context-save',
-                title: 'Save to Schedulist',
-                contexts: ['link']
-            }
-        )
-    
-        menus.create(
-            {
-                id: 'browser-action-context-save',
-                title: 'Save this page to Schedulist',
-                contexts: ['browser_action']
-            }
-        )
-    
-        /*try {
-            menus.create(
-                {
-                    id: 'bookmark-context-save',
-                    title: 'Save to Schedulist',
-                    contexts: ['bookmark']
-                }
-            )
-        } catch (e){
-            console.warn('Bookmark context menu extensions are not supported in this browser')
-        }
-        
-    
-        
+    return new Promise(async (resolve, reject) => {
         try {
-            menus.create(
-                {
-                    id: 'tab-context-save',
-                    title: 'Save to Schedulist',
-                    contexts: ['tab']
-                }
-            )
-        
-            menus.create(
-                {
-                    id: 'tab-context-save-and-close',
-                    title: 'Save to Schedulist and close',
-                    contexts: ['tab']
-                }
-            )
+            const { endpoint, token } = await getEnvironment();
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({ query })
+            })
+
+            resolve(response)
         } catch(e){
-            console.log('Tab context menu extensions are not supported in this browser')
-        }*/
-        
-    
-    
-        menus.create(
-            {
-                id: 'browser-action-context-navigate',
-                title: 'Open Schedulist',
-                contexts: ['browser_action']
-            }
-        )
-    
-        menus.create(
-            {
-                id: 'browser-action-context-navigate-in-new-tab',
-                title: 'Open Schedulist in New Tab',
-                contexts: ['browser_action']
-            }
-        )
-    
-        
-        menus.onClicked.addListener((info, tab) => {
-            if(info.menuItemId === 'link-context-save') {
-                const url = info.linkUrl;
-                saveLink(tab, url)
-            } else if(info.menuItemId === 'browser-action-context-save') {
-                saveLink(tab)
-            } else if(info.menuItemId === 'browser-action-context-navigate') {
-                b.tabs.update({
-                    url: "https://web.schedulist.app"
-            });
-            } else if(info.menuItemId === 'browser-action-context-navigate-in-new-tab') {
-                b.tabs.create({
-                    url: "https://web.schedulist.app"
-            });
-            } /*else if(info.menuItemId === 'bookmark-context-save') {
-                const id = info.bookmarkId;
-                b.bookmarks.get(id, bookmark => {
-                    if(bookmark.url){
-                        saveLink(tab, bookmark.url)
-                    }
-                });
-                
-            } else if (info.menuItemId === 'tab-context-save') {
-                saveLink(tab)
-            } else if (info.menuItemId === 'tab-context-save-and-close') {
-                saveLink(tab).then(() => b.tabs.discard(tab.id));
-                
-            }*/
-        });
-    
-        if(b.omnibox)
-            b.omnibox.setDefaultSuggestion({
-                description: 'Add task to Schedulist'
-            });
-        
-            b.omnibox.onInputEntered.addListener(async (text, disposition) => {
-                if(text.startsWith('http')){
-                    switch (disposition) {
-                        case "currentTab":
-                            b.tabs.update({url: text});
-                            break;
-                        case "newForegroundTab":
-                            b.tabs.create({url: text});
-                            break;
-                        case "newBackgroundTab":
-                            b.tabs.create({url: text, active: false});
-                            break;
-                        }
-                }
-                else if(text.length > 0) {
-                    
-        
-                    const query = `
-                        mutation {
-                            addTask(data: { title: "${text}" }) {
-                                addedTask {
-                                    _id
-                                }
-                            }
-                        }
-                    `
-                    sendQuery(query)
-                }
-            });
-    
-            
-            b.omnibox.onInputStarted.addListener(async (hey) => {
-                console.log('onInputStarted', hey)
-            });
-            
-            b.omnibox.onInputCancelled.addListener(async (hey) => {
-                console.log('onInputCancelled', hey)
-            });
-    
-            b.omnibox.onInputChanged.addListener(async (text, suggest) => {
-                console.log('onInputChanged', text)
-    
-                if(text.length > 0){
-                    suggest([
-                        {content: text, description: 'Add "' + text + '" to Schedulist',},
-                        {content: 'https://web.schedulist.app', description: 'Open Schedulist',}
-                    ])
-                } else {
-                    suggest([
-                        {content: 'https://web.schedulist.app', description: 'Open Schedulist',}
-                    ])
-                }
-            });
-        }
-} catch(e){
-    console.warn('Something nonessential failed to load', e)
+            reject(e)
+        }   
+    })
 }
 
+const initUI = () => {
+
+    const onMenuClicked = (info, tab) => {
+        if(info.menuItemId === 'link-context-save') {
+            const url = info.linkUrl;
+            saveLink(tab, url)
+        } else if(info.menuItemId === 'browser-action-context-save') {
+            saveLink(tab)
+        } else if(info.menuItemId === 'browser-action-context-navigate') {
+            openInCurrentTab();
+            
+        } else if(info.menuItemId === 'browser-action-context-navigate-in-new-tab') {
+            openInNewTab();
+        } /*else if(info.menuItemId === 'bookmark-context-save') {
+            const id = info.bookmarkId;
+            b.bookmarks.get(id, bookmark => {
+                if(bookmark.url){
+                    saveLink(tab, bookmark.url)
+                }
+            });
+            
+        } else if (info.menuItemId === 'tab-context-save') {
+            saveLink(tab)
+        } else if (info.menuItemId === 'tab-context-save-and-close') {
+            saveLink(tab).then(() => b.tabs.discard(tab.id));
+            
+        }*/
+    }
+
+    const onOmniBoxInputEntered = async (text, disposition) => {
+        if(text.startsWith('http')){
+            switch (disposition) {
+                case "currentTab":
+                    b.tabs.update({url: text});
+                    break;
+                case "newForegroundTab":
+                    b.tabs.create({url: text});
+                    break;
+                case "newBackgroundTab":
+                    b.tabs.create({url: text, active: false});
+                    break;
+                }
+        }
+        else if(text.length > 0) {
+            
+
+            const query = `
+                mutation {
+                    addTask(data: { title: "${text}" }) {
+                        addedTask {
+                            _id
+                        }
+                    }
+                }
+            `
+            sendQuery(query)
+        }
+    }
+
+    const onInputChanged = async (text, suggest) => {
+        console.log('onInputChanged', text)
+        getEnvironment().then(({appUrl}) => {
+            if(text.length > 0){
+                suggest([
+                    {content: text, description: 'Add "' + text + '" to Schedulist',},
+                    {content: appUrl, description: 'Open Schedulist',}
+                ])
+            } else {
+                suggest([
+                    {content: appUrl, description: 'Open Schedulist',}
+                ])
+            }
+        });
+
+        
+    }
+    const menus = b.contextMenus || b.menus;
     
+        try {
+            
+        
+            if(menus){
+                    menus.removeAll();
+                
+                    menus.create(
+                        {
+                            id: 'link-context-save',
+                            title: 'Save to Schedulist',
+                            contexts: ['link']
+                        }
+                    )
+                
+                    menus.create(
+                        {
+                            id: 'browser-action-context-save',
+                            title: 'Save this page to Schedulist',
+                            contexts: ['browser_action']
+                        }
+                    )
+                
+                    /*try {
+                        menus.create(
+                            {
+                                id: 'bookmark-context-save',
+                                title: 'Save to Schedulist',
+                                contexts: ['bookmark']
+                            }
+                        )
+                    } catch (e){
+                        console.warn('Bookmark context menu extensions are not supported in this browser')
+                    }
+                    
+                
+                    
+                    try {
+                        menus.create(
+                            {
+                                id: 'tab-context-save',
+                                title: 'Save to Schedulist',
+                                contexts: ['tab']
+                            }
+                        )
+                    
+                        menus.create(
+                            {
+                                id: 'tab-context-save-and-close',
+                                title: 'Save to Schedulist and close',
+                                contexts: ['tab']
+                            }
+                        )
+                    } catch(e){
+                        console.log('Tab context menu extensions are not supported in this browser')
+                    }*/
+                    
+                
+                
+                    menus.create(
+                        {
+                            id: 'browser-action-context-navigate',
+                            title: 'Open Schedulist',
+                            contexts: ['browser_action']
+                        }
+                    )
+                
+                    menus.create(
+                        {
+                            id: 'browser-action-context-navigate-in-new-tab',
+                            title: 'Open Schedulist in New Tab',
+                            contexts: ['browser_action']
+                        }
+                    )
+                
+                    
+                    menus.onClicked.addListener(onMenuClicked);
+                
+                    if(b.omnibox)
+                        b.omnibox.setDefaultSuggestion({
+                            description: 'Add task to Schedulist'
+                        });
+                    
+                        b.omnibox.onInputEntered.addListener(onOmniBoxInputEntered);
+                
+                        
+                        /*b.omnibox.onInputStarted.addListener(async (hey) => {
+                            console.log('onInputStarted', hey)
+                        });
+                        
+                        b.omnibox.onInputCancelled.addListener(async (hey) => {
+                            console.log('onInputCancelled', hey)
+                        });*/
+                
+                        b.omnibox.onInputChanged.addListener(onInputChanged);
+    
+                    
+                }
+            } catch(e){
+                console.warn('Something nonessential failed to load', e)
+            }
+        
+            
+            const onMessage = async (request, sender, sendResponse) => {
+                console.log('got message!', request)
+                if(request.type === 'login'){
+                    b.storage.local.set({
+                        'token': request.token,
+                        'endpoint': request.endpoint,
+                        'appUrl': request.appUrl,
+                    });
+                    console.log('token saved!')
+                    b.storage.local.get('token', console.log)
+                    sendResponse({success: true})
+                }
+                else if(request.type === 'logout'){
+                    b.storage.local.remove('token');
+                    sendResponse({success: true})
+                }
+            }
+        
+            b.runtime.onMessage.addListener(onMessage);
+
+            async function onCommand(command) {
+                if (command === "save-to-schedulist") {
+                    b.tabs.query({active: true, windowId: b.windows.WINDOW_ID_CURRENT}, tabs => {
+                        b.tabs.get(tabs[0].id, tab => saveLink(tab))
+                    })
+                } else if(command === "open-schedulist") {
+                    openInNewTab();
+                }
+            }
+        
+            b.commands.onCommand.addListener(onCommand);
+            return () => {
+                b.commands.onCommand.removeListener(onCommand)
+                b.runtime.onMessage.removeListener(onMessage);
+
+                try {
+                    if(menus){
+                        menus.onClicked.removeListener(onMenuClicked);
+                    }
+                    
+                
+                    if(b.omnibox){
+                        b.omnibox.onInputEntered.removeListener(onOmniBoxInputEntered);
+                        b.omnibox.onInputChanged.removeListener(onInputChanged);
+                    }   
+                } catch(e){
+                    console.warn('Something nonessential failed to unload', e)
+                }
+            }
+    
+}
+
+const resetUI = initUI();
 
 
-    b.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
-        console.log('got message!', request)
-        if(request.type === 'login'){
-            b.storage.local.set({
-                'token': request.token
-            });
-            console.log('token saved!')
-            b.storage.local.get('token', console.log)
-            sendResponse({success: true})
-        }
-        else if(request.type === 'logout'){
-            b.storage.local.remove('token');
-            sendResponse({success: true})
-        }
-    })
-
-
-    b.commands.onCommand.addListener(async function (command) {
-        if (command === "save-to-schedulist") {
-            b.tabs.query({active: true, windowId: b.windows.WINDOW_ID_CURRENT}, tabs => {
-                b.tabs.get(tabs[0].id, tab => saveLink(tab))
-            })
-        } else if(command === "open-schedulist") {
-            b.tabs.create({
-                url: "https://web.schedulist.app"
-            });
-        }
-      });
 
 /**
  * 
