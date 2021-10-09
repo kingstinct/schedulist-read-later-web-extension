@@ -6,9 +6,6 @@
   "permissions": [
     "tabs",
     "contextMenus",
-    "management",
-    "identity",
-    "bookmarks",
     "*://*/*"
   ],
   "background": {
@@ -20,9 +17,6 @@
   "offline_enabled": false,
   "omnibox": {
     "keyword": "sch"
-  },
-  "oauth2": {
-
   },
   "externally_connectable": {
     "ids": ["*"],

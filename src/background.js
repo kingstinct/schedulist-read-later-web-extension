@@ -16,6 +16,8 @@ const redirectToLogin = () => {
     b.tabs.create({url: 'https://web.schedulist.app/login?closeAfterLogin=true'})
 }
 
+const ENDPOINT = 'https://schedulist-production.herokuapp.com/graphql'
+
 if(b.contextMenus){
 
     const menus = b.contextMenus || b.menus;
@@ -37,7 +39,7 @@ if(b.contextMenus){
         }
     )
 
-    try {
+    /*try {
         menus.create(
             {
                 id: 'bookmark-context-save',
@@ -69,7 +71,7 @@ if(b.contextMenus){
         )
     } catch(e){
         console.log('Tab context menu extensions are not supported in this browser')
-    }
+    }*/
     
 
 
@@ -95,11 +97,6 @@ if(b.contextMenus){
 
     b.omnibox.onInputEntered.addListener(async (text, disposition) => {
         if(text.startsWith('http')){
-            b.management.getAll(apps => {
-                console.log('apps', apps);
-                const pwa = apps.find(a => a.appLaunchUrl === 'https://web.schedulist.app');
-                if (pwa) b.management.launchApp(pwa.id);
-            });
             switch (disposition) {
                 case "currentTab":
                     b.tabs.update({url: text});
@@ -113,7 +110,7 @@ if(b.contextMenus){
                 }
         }
         else if(text.length > 0) {
-            const endpoint = 'https://schedulist-production.herokuapp.com/graphql'
+            
 
     const query = `
         mutation {
@@ -125,7 +122,7 @@ if(b.contextMenus){
         }
     `
     
-        await fetch(endpoint, {
+        await fetch(ENDPOINT, {
             method: 'POST',
             headers:{
             'Content-Type': 'application/json'
@@ -173,7 +170,7 @@ if(b.contextMenus){
             b.tabs.create({
                 url: "https://web.schedulist.app"
         });
-        } else if(info.menuItemId === 'bookmark-context-save') {
+        } /*else if(info.menuItemId === 'bookmark-context-save') {
             const id = info.bookmarkId;
             b.bookmarks.get(id, bookmark => {
                 if(bookmark.url){
@@ -186,7 +183,7 @@ if(b.contextMenus){
         } else if (info.menuItemId === 'tab-context-save-and-close') {
             saveLink(tab).then(() => b.tabs.discard(tab.id));
             
-        }
+        }*/
     });
 
     b.commands.onCommand.addListener(async function (command) {
@@ -212,8 +209,6 @@ async function saveLink(tab, overrideLink) {
     }
     b.tabs.sendMessage(tab.id, {loading: true})
 
-    const endpoint = 'https://schedulist-production.herokuapp.com/graphql'
-
     const query = `
         mutation {
             addTask(data: { title: "${link}" }) {
@@ -226,7 +221,7 @@ async function saveLink(tab, overrideLink) {
     
     try {
         pendingTabRequests.push(tab.id)
-        const response = await fetch(endpoint, {
+        const response = await fetch(ENDPOINT, {
             method: 'POST',
             headers:{
             'Content-Type': 'application/json'
