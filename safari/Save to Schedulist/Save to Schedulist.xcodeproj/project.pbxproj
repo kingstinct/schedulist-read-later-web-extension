@@ -1,0 +1,941 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9234BE02711B89000343D9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9234BDF2711B89000343D9E /* AppDelegate.swift */; };
+		A9234BE22711B89000343D9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9234BE12711B89000343D9E /* SceneDelegate.swift */; };
+		A9234BE52711B89000343D9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9234BE32711B89000343D9E /* LaunchScreen.storyboard */; };
+		A9234BE82711B89000343D9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9234BE62711B89000343D9E /* Main.storyboard */; };
+		A9234BF12711B89000343D9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9234BF02711B89000343D9E /* AppDelegate.swift */; };
+		A9234BF42711B89000343D9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9234BF22711B89000343D9E /* Main.storyboard */; };
+		A9234BFC2711B89000343D9E /* Save to Schedulist Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A9234BFB2711B89000343D9E /* Save to Schedulist Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A9234C062711B89000343D9E /* Save to Schedulist Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A9234C052711B89000343D9E /* Save to Schedulist Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A9234C0C2711B89000343D9E /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = A9234BCF2711B88F00343D9E /* Main.html */; };
+		A9234C0D2711B89000343D9E /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = A9234BCF2711B88F00343D9E /* Main.html */; };
+		A9234C0E2711B89000343D9E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD12711B88F00343D9E /* Icon.png */; };
+		A9234C0F2711B89000343D9E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD12711B88F00343D9E /* Icon.png */; };
+		A9234C102711B89000343D9E /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD22711B88F00343D9E /* Style.css */; };
+		A9234C112711B89000343D9E /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD22711B88F00343D9E /* Style.css */; };
+		A9234C122711B89000343D9E /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD32711B88F00343D9E /* Script.js */; };
+		A9234C132711B89000343D9E /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD32711B88F00343D9E /* Script.js */; };
+		A9234C142711B89000343D9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9234BD42711B88F00343D9E /* ViewController.swift */; };
+		A9234C152711B89000343D9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9234BD42711B88F00343D9E /* ViewController.swift */; };
+		A9234C162711B89000343D9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD52711B89000343D9E /* Assets.xcassets */; };
+		A9234C172711B89000343D9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9234BD52711B89000343D9E /* Assets.xcassets */; };
+		A9234C182711B89000343D9E /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9234BD72711B89000343D9E /* SafariWebExtensionHandler.swift */; };
+		A9234C192711B89000343D9E /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9234BD72711B89000343D9E /* SafariWebExtensionHandler.swift */; };
+		A9234C2F2711B89100343D9E /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2B2711B89100343D9E /* background.js */; };
+		A9234C302711B89100343D9E /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2C2711B89100343D9E /* manifest.json */; };
+		A9234C312711B89100343D9E /* assets in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2D2711B89100343D9E /* assets */; };
+		A9234C322711B89100343D9E /* contentScript.js in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2E2711B89100343D9E /* contentScript.js */; };
+		A9234C332711B89100343D9E /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2B2711B89100343D9E /* background.js */; };
+		A9234C342711B89100343D9E /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2C2711B89100343D9E /* manifest.json */; };
+		A9234C352711B89100343D9E /* assets in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2D2711B89100343D9E /* assets */; };
+		A9234C362711B89100343D9E /* contentScript.js in Resources */ = {isa = PBXBuildFile; fileRef = A9234C2E2711B89100343D9E /* contentScript.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A9234BFD2711B89000343D9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9234BC92711B88E00343D9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9234BFA2711B89000343D9E;
+			remoteInfo = "Save to Schedulist Extension (iOS)";
+		};
+		A9234C072711B89000343D9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9234BC92711B88E00343D9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9234C042711B89000343D9E;
+			remoteInfo = "Save to Schedulist Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A9234C1F2711B89000343D9E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A9234BFC2711B89000343D9E /* Save to Schedulist Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234C262711B89000343D9E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A9234C062711B89000343D9E /* Save to Schedulist Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A9234BD02711B88F00343D9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		A9234BD12711B88F00343D9E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A9234BD22711B88F00343D9E /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		A9234BD32711B88F00343D9E /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		A9234BD42711B88F00343D9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A9234BD52711B89000343D9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A9234BD72711B89000343D9E /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		A9234BDC2711B89000343D9E /* Save to Schedulist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Save to Schedulist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9234BDF2711B89000343D9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A9234BE12711B89000343D9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A9234BE42711B89000343D9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A9234BE72711B89000343D9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A9234BE92711B89000343D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9234BEE2711B89000343D9E /* Save to Schedulist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Save to Schedulist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9234BF02711B89000343D9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A9234BF32711B89000343D9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A9234BF52711B89000343D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9234BF62711B89000343D9E /* Save to Schedulist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Save to Schedulist.entitlements"; sourceTree = "<group>"; };
+		A9234BFB2711B89000343D9E /* Save to Schedulist Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Save to Schedulist Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9234C002711B89000343D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9234C052711B89000343D9E /* Save to Schedulist Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Save to Schedulist Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9234C0A2711B89000343D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9234C0B2711B89000343D9E /* Save to Schedulist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Save to Schedulist.entitlements"; sourceTree = "<group>"; };
+		A9234C2B2711B89100343D9E /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../../src/background.js; sourceTree = "<group>"; };
+		A9234C2C2711B89100343D9E /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../src/manifest.json; sourceTree = "<group>"; };
+		A9234C2D2711B89100343D9E /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../../src/assets; sourceTree = "<group>"; };
+		A9234C2E2711B89100343D9E /* contentScript.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = contentScript.js; path = ../../../src/contentScript.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9234BD92711B89000343D9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234BEB2711B89000343D9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234BF82711B89000343D9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234C022711B89000343D9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9234BC82711B88E00343D9E = {
+			isa = PBXGroup;
+			children = (
+				A9234BCD2711B88F00343D9E /* Shared (App) */,
+				A9234BD62711B89000343D9E /* Shared (Extension) */,
+				A9234BDE2711B89000343D9E /* iOS (App) */,
+				A9234BEF2711B89000343D9E /* macOS (App) */,
+				A9234BFF2711B89000343D9E /* iOS (Extension) */,
+				A9234C092711B89000343D9E /* macOS (Extension) */,
+				A9234BDD2711B89000343D9E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A9234BCD2711B88F00343D9E /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				A9234BD42711B88F00343D9E /* ViewController.swift */,
+				A9234BD52711B89000343D9E /* Assets.xcassets */,
+				A9234BCE2711B88F00343D9E /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		A9234BCE2711B88F00343D9E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A9234BCF2711B88F00343D9E /* Main.html */,
+				A9234BD12711B88F00343D9E /* Icon.png */,
+				A9234BD22711B88F00343D9E /* Style.css */,
+				A9234BD32711B88F00343D9E /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A9234BD62711B89000343D9E /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				A9234C2A2711B89100343D9E /* Resources */,
+				A9234BD72711B89000343D9E /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		A9234BDD2711B89000343D9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9234BDC2711B89000343D9E /* Save to Schedulist.app */,
+				A9234BEE2711B89000343D9E /* Save to Schedulist.app */,
+				A9234BFB2711B89000343D9E /* Save to Schedulist Extension.appex */,
+				A9234C052711B89000343D9E /* Save to Schedulist Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9234BDE2711B89000343D9E /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				A9234BDF2711B89000343D9E /* AppDelegate.swift */,
+				A9234BE12711B89000343D9E /* SceneDelegate.swift */,
+				A9234BE32711B89000343D9E /* LaunchScreen.storyboard */,
+				A9234BE62711B89000343D9E /* Main.storyboard */,
+				A9234BE92711B89000343D9E /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		A9234BEF2711B89000343D9E /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				A9234BF02711B89000343D9E /* AppDelegate.swift */,
+				A9234BF22711B89000343D9E /* Main.storyboard */,
+				A9234BF52711B89000343D9E /* Info.plist */,
+				A9234BF62711B89000343D9E /* Save to Schedulist.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		A9234BFF2711B89000343D9E /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				A9234C002711B89000343D9E /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		A9234C092711B89000343D9E /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				A9234C0A2711B89000343D9E /* Info.plist */,
+				A9234C0B2711B89000343D9E /* Save to Schedulist.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		A9234C2A2711B89100343D9E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A9234C2B2711B89100343D9E /* background.js */,
+				A9234C2C2711B89100343D9E /* manifest.json */,
+				A9234C2D2711B89100343D9E /* assets */,
+				A9234C2E2711B89100343D9E /* contentScript.js */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9234BDB2711B89000343D9E /* Save to Schedulist (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9234C202711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist (iOS)" */;
+			buildPhases = (
+				A9234BD82711B89000343D9E /* Sources */,
+				A9234BD92711B89000343D9E /* Frameworks */,
+				A9234BDA2711B89000343D9E /* Resources */,
+				A9234C1F2711B89000343D9E /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9234BFE2711B89000343D9E /* PBXTargetDependency */,
+			);
+			name = "Save to Schedulist (iOS)";
+			productName = "Save to Schedulist (iOS)";
+			productReference = A9234BDC2711B89000343D9E /* Save to Schedulist.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A9234BED2711B89000343D9E /* Save to Schedulist (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9234C272711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist (macOS)" */;
+			buildPhases = (
+				A9234BEA2711B89000343D9E /* Sources */,
+				A9234BEB2711B89000343D9E /* Frameworks */,
+				A9234BEC2711B89000343D9E /* Resources */,
+				A9234C262711B89000343D9E /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9234C082711B89000343D9E /* PBXTargetDependency */,
+			);
+			name = "Save to Schedulist (macOS)";
+			productName = "Save to Schedulist (macOS)";
+			productReference = A9234BEE2711B89000343D9E /* Save to Schedulist.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A9234BFA2711B89000343D9E /* Save to Schedulist Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9234C1C2711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist Extension (iOS)" */;
+			buildPhases = (
+				A9234BF72711B89000343D9E /* Sources */,
+				A9234BF82711B89000343D9E /* Frameworks */,
+				A9234BF92711B89000343D9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Save to Schedulist Extension (iOS)";
+			productName = "Save to Schedulist Extension (iOS)";
+			productReference = A9234BFB2711B89000343D9E /* Save to Schedulist Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A9234C042711B89000343D9E /* Save to Schedulist Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9234C232711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist Extension (macOS)" */;
+			buildPhases = (
+				A9234C012711B89000343D9E /* Sources */,
+				A9234C022711B89000343D9E /* Frameworks */,
+				A9234C032711B89000343D9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Save to Schedulist Extension (macOS)";
+			productName = "Save to Schedulist Extension (macOS)";
+			productReference = A9234C052711B89000343D9E /* Save to Schedulist Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9234BC92711B88E00343D9E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					A9234BDB2711B89000343D9E = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					A9234BED2711B89000343D9E = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					A9234BFA2711B89000343D9E = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					A9234C042711B89000343D9E = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = A9234BCC2711B88E00343D9E /* Build configuration list for PBXProject "Save to Schedulist" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A9234BC82711B88E00343D9E;
+			productRefGroup = A9234BDD2711B89000343D9E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9234BDB2711B89000343D9E /* Save to Schedulist (iOS) */,
+				A9234BED2711B89000343D9E /* Save to Schedulist (macOS) */,
+				A9234BFA2711B89000343D9E /* Save to Schedulist Extension (iOS) */,
+				A9234C042711B89000343D9E /* Save to Schedulist Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9234BDA2711B89000343D9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C0E2711B89000343D9E /* Icon.png in Resources */,
+				A9234BE52711B89000343D9E /* LaunchScreen.storyboard in Resources */,
+				A9234C0C2711B89000343D9E /* Main.html in Resources */,
+				A9234C122711B89000343D9E /* Script.js in Resources */,
+				A9234C162711B89000343D9E /* Assets.xcassets in Resources */,
+				A9234BE82711B89000343D9E /* Main.storyboard in Resources */,
+				A9234C102711B89000343D9E /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234BEC2711B89000343D9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C0F2711B89000343D9E /* Icon.png in Resources */,
+				A9234C112711B89000343D9E /* Style.css in Resources */,
+				A9234BF42711B89000343D9E /* Main.storyboard in Resources */,
+				A9234C132711B89000343D9E /* Script.js in Resources */,
+				A9234C172711B89000343D9E /* Assets.xcassets in Resources */,
+				A9234C0D2711B89000343D9E /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234BF92711B89000343D9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C352711B89100343D9E /* assets in Resources */,
+				A9234C342711B89100343D9E /* manifest.json in Resources */,
+				A9234C332711B89100343D9E /* background.js in Resources */,
+				A9234C362711B89100343D9E /* contentScript.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234C032711B89000343D9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C312711B89100343D9E /* assets in Resources */,
+				A9234C302711B89100343D9E /* manifest.json in Resources */,
+				A9234C2F2711B89100343D9E /* background.js in Resources */,
+				A9234C322711B89100343D9E /* contentScript.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9234BD82711B89000343D9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C142711B89000343D9E /* ViewController.swift in Sources */,
+				A9234BE02711B89000343D9E /* AppDelegate.swift in Sources */,
+				A9234BE22711B89000343D9E /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234BEA2711B89000343D9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C152711B89000343D9E /* ViewController.swift in Sources */,
+				A9234BF12711B89000343D9E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234BF72711B89000343D9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C182711B89000343D9E /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9234C012711B89000343D9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9234C192711B89000343D9E /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9234BFE2711B89000343D9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9234BFA2711B89000343D9E /* Save to Schedulist Extension (iOS) */;
+			targetProxy = A9234BFD2711B89000343D9E /* PBXContainerItemProxy */;
+		};
+		A9234C082711B89000343D9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9234C042711B89000343D9E /* Save to Schedulist Extension (macOS) */;
+			targetProxy = A9234C072711B89000343D9E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A9234BCF2711B88F00343D9E /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9234BD02711B88F00343D9E /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		A9234BE32711B89000343D9E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9234BE42711B89000343D9E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A9234BE62711B89000343D9E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9234BE72711B89000343D9E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A9234BF22711B89000343D9E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9234BF32711B89000343D9E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A9234C1A2711B89000343D9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A9234C1B2711B89000343D9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A9234C1D2711B89000343D9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist.Extension";
+				PRODUCT_NAME = "Save to Schedulist Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A9234C1E2711B89000343D9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist.Extension";
+				PRODUCT_NAME = "Save to Schedulist Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A9234C212711B89000343D9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist";
+				PRODUCT_NAME = "Save to Schedulist";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A9234C222711B89000343D9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist";
+				PRODUCT_NAME = "Save to Schedulist";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A9234C242711B89000343D9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Save to Schedulist.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist.Extension";
+				PRODUCT_NAME = "Save to Schedulist Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A9234C252711B89000343D9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Save to Schedulist.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist.Extension";
+				PRODUCT_NAME = "Save to Schedulist Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A9234C282711B89000343D9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Save to Schedulist.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist";
+				PRODUCT_NAME = "Save to Schedulist";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A9234C292711B89000343D9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Save to Schedulist.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Save to Schedulist";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kingstinct.Save-to-Schedulist";
+				PRODUCT_NAME = "Save to Schedulist";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9234BCC2711B88E00343D9E /* Build configuration list for PBXProject "Save to Schedulist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9234C1A2711B89000343D9E /* Debug */,
+				A9234C1B2711B89000343D9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9234C1C2711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9234C1D2711B89000343D9E /* Debug */,
+				A9234C1E2711B89000343D9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9234C202711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9234C212711B89000343D9E /* Debug */,
+				A9234C222711B89000343D9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9234C232711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9234C242711B89000343D9E /* Debug */,
+				A9234C252711B89000343D9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9234C272711B89000343D9E /* Build configuration list for PBXNativeTarget "Save to Schedulist (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9234C282711B89000343D9E /* Debug */,
+				A9234C292711B89000343D9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A9234BC92711B88E00343D9E /* Project object */;
+}

@@ -23,8 +23,24 @@
       "assets/css/main.css"
     ]
   }],
+  "page_action": {
+    "hide_matches": ["https://*.schedulist.app/*"],
+    "default_icon": {
+      "19": "assets/icons/icon_19.png",
+      "38": "assets/icons/icon_38.png"
+    },
+    "default_title": "Save to Schedulist"
+  },
+  "commands": {
+    "toggle-feature": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "Saves the current URL to Schedulist"
+    }
+  },
   "browser_action": {
-    "default_title": "Save to Schedulist",
+    "default_title": "Open Schedulist",
     "default_icon": {
       "16": "assets/icons/icon_16.png",
       "48": "assets/icons/icon_48.png",

@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["es6", "dom"],
+    "esModuleInterop": true
+  }
+}

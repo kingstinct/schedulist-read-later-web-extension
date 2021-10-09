@@ -1,29 +1,18 @@
-window.browser = (() => {
+/**
+ * @typedef { import("webextension-polyfill").Browser } Browser
+ */
+
+/**
+ * @typedef { import("webextension-polyfill").Tabs.Tab } Tab
+ */
+
+/** @type {Browser} */
+const b = (() => {
     return window.msBrowser ||
         window.browser ||
         window.chrome;
 })();
 
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if(request.clear){
-        removeAlert()
-        console.log('cleared');
-        return
-    }
-
-    if(request.loading){
-        if(document.querySelector('.schedulist-ext-alert .ext-loading')) return
-
-        removeAlert(createLoadingAlert)
-    }else{
-        removeAlert(() => createMsgAlert(request.msg, request.error))
-
-        setTimeout(() => {
-            removeAlert()
-        }, 3000);
-    }
-
-})
 
 const removeAlert = (callback) => {
     const el = document.querySelector('.schedulist-ext-alert')
@@ -50,7 +39,7 @@ const createLoadingAlert = () => {
     wrapper.appendChild(activityIndicatorWrapper)
 
     const img = document.createElement('img')
-    img.src = browser.runtime.getURL('assets/images/spinner.gif')
+    img.src = b.runtime.getURL('assets/images/spinner.gif')
     activityIndicatorWrapper.appendChild(img)
 
     const text = document.createElement('p')
@@ -68,3 +57,24 @@ const createMsgAlert = (msg, error) => {
     text.textContent = msg
     wrapper.appendChild(text)
 }
+
+b.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if(request.clear){
+        removeAlert()
+        console.log('cleared');
+        return
+    }
+
+    if(request.loading){
+        if(document.querySelector('.schedulist-ext-alert .ext-loading')) return
+
+        removeAlert(createLoadingAlert)
+    }else{
+        removeAlert(() => createMsgAlert(request.msg, request.error))
+
+        setTimeout(() => {
+            removeAlert()
+        }, 3000);
+    }
+
+})

@@ -1,0 +1,13 @@
+{
+  "name": "save-to-schedulist",
+  "version": "0.0.8",
+  "scripts": {
+    "generate-safari-extension": "cd .. && xcrun safari-web-extension-converter ./read-later-web-extension/src --bundle-identifier com.kingstinct.schedulist-web-extension --project-location read-later-web-extension/safari",
+    "pack-extension": "cd src && zip -r ../submittables/extension.zip . -x */.DS_Store && cd .."
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.159",
+    "@types/webextension-polyfill": "^0.8.0",
+    "webextension-polyfill": "^0.8.0"
+  }
+}
