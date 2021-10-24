@@ -13,12 +13,12 @@ const b = (chrome || msBrowser || browser)
 let pendingTabRequests = [];
 
 const APP_URL = 'https://web.schedulist.app';
-const ENDPOINT = 'https://schedulist-production.herokuapp.com/graphql'
+const DEFAULT_ENDPOINT = 'https://schedulist-production.herokuapp.com/graphql'
 /** @returns {PromiseLike<{ appUrl: string, endpoint: string, token?: string }>}  */
 const getEnvironment = () => {
     return new Promise(resolve => {
         b.storage.local.get(['token', 'appUrl', 'endpoint'], async ({token, endpoint, appUrl}) => {
-            resolve({token, endpoint: endpoint || ENDPOINT, appUrl: appUrl || APP_URL});
+            resolve({token, endpoint: endpoint || DEFAULT_ENDPOINT, appUrl: appUrl || APP_URL});
         })
     });
 }
@@ -308,7 +308,9 @@ const resetUI = initUI();
  * @returns 
  */
 async function saveLink(tab, overrideLink) {
-    const link = overrideLink || tab.url
+    const link = overrideLink || tab.url;
+    const title = tab.title;
+    
     if(pendingTabRequests.includes(tab.id)){
         console.log('There is an already ongoing req for current tab');
         return
@@ -317,7 +319,7 @@ async function saveLink(tab, overrideLink) {
 
     const query = `
         mutation {
-            addTask(data: { title: "${link}" }) {
+            addTask(data: { url: "${link}", title: "${title}" }) {
                 addedTask {
                     _id
                 }
