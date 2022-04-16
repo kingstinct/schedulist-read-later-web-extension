@@ -1,4 +1,4 @@
-# schedulist-read-later-web-extension
+# Schedulist read later Web Extension
 
 Extension for Chrome, Edge and Firefox. Uploaded and submitted as Zip files here:
 
@@ -11,3 +11,5 @@ Store Listings
 - [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/schedulist/)
 - [Edge](https://microsoftedge.microsoft.com/addons/detail/bipgledohlaoppnngjjgogcpdhnknlnj)
 - [Chrome](https://chrome.google.com/webstore/detail/save-to-schedulist/knclkjigbiflbnjjhgghkmfngcpogpgp)
+
+Web Extension client for [Schedulist](https://www.schedulist.app/). Feel free to build on top of it!
